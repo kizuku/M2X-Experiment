@@ -1,6 +1,6 @@
-from googlemaps import GoogleMaps
+from geopy.geocoders import Nominatim
 
-gmaps = GoogleMaps(AIzaSyDK9zd0m8qvDcS-Nl9SxUflRk9nRFi-EuM)
-address = 'Constitution Ave NW & 10th St NW, Washington, DC'
-lat, lng = gmaps.address_to_latlng(address)
-print lat, lng
+gmaps = Nominatim()
+address = gmaps.geocode("175 5th Avenue NYC")
+print (address.address)
+print ((address.latitude, address.longitude))
