@@ -1,6 +1,13 @@
+import json
+import urllib2
+
 from m2x.client import M2XClien
 
 M2X_API_KEY = "94df37fd862fe38cf41aabf718a821e7"
+req = urllib2.Request("http://api.open-notify.org/iss-now.json")
+response = urllib2.urlopen(req)
+
+obj = json.loads(response.read())
 
 client = M2XClient(key=os.environ[M2X_API_KEY])
 
@@ -13,4 +20,5 @@ device = client.create_device(
 stream = device.create_stream('current_location')
 
 while True:
-    stream.add_value(
+    stream.add_value(obj['timestamp']
+    stream.add_value(obj['iss_position']['latitude'], obj['iss_position']['longitude']
