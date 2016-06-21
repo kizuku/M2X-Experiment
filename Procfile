@@ -1,1 +1,1 @@
-web: python M2X-Communication.py
+web: python master.py
