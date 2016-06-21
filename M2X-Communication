@@ -1,1 +1,16 @@
+from m2x.client import M2XClien
 
+M2X_API_KEY = "94df37fd862fe38cf41aabf718a821e7"
+
+client = M2XClient(key=os.environ[M2X_API_KEY])
+
+device = client.create_device(
+    name='Current Location'
+    description='Store current location every 10 seconds',
+    visibility='public'
+)
+
+stream = device.create_stream('current_location')
+
+while True:
+    stream.add_value(
